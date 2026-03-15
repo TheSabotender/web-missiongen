@@ -3,30 +3,60 @@
 }
 
 :root {
-  --bg: #0c1017;
-  --panel: #141b26;
-  --panel-2: #1b2432;
-  --text: #edf3ff;
-  --muted: #b6c0d4;
-  --accent: #7ec8ff;
-  --border: rgba(255,255,255,0.08);
-  --shadow: 0 18px 40px rgba(0,0,0,0.28);
+  --paper: #f8f1df;
+  --paper-shadow: #e5d8b9;
+  --folder: #d8bb6d;
+  --folder-dark: #b79246;
+  --ink: #33261a;
+  --ink-muted: #6e5d48;
+  --stamp: #8f2f1f;
+  --line: rgba(79, 56, 29, 0.22);
+  --shadow: 0 14px 22px rgba(74, 54, 26, 0.28);
 }
 
 body {
   margin: 0;
-  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
-  background:
-          radial-gradient(circle at top, rgba(126,200,255,0.12), transparent 30%),
-          radial-gradient(circle at right, rgba(214,156,255,0.10), transparent 25%),
-          var(--bg);
-  color: var(--text);
+  font-family: "Special Elite", "Courier New", Courier, monospace;
+  color: var(--ink);
   min-height: 100vh;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.018) 0,
+      rgba(0, 0, 0, 0.018) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    linear-gradient(180deg, #ebd79f, #c8a457 65%, #af8841);
 }
 
 .app {
-  width: min(1100px, calc(100% - 32px));
-  margin: 32px auto 48px;
+  position: relative;
+  width: min(1120px, calc(100% - 36px));
+  margin: 26px auto 40px;
+  padding: 26px;
+  background: linear-gradient(165deg, #e4c97e, var(--folder));
+  border: 2px solid var(--folder-dark);
+  border-radius: 10px;
+  box-shadow:
+    0 20px 34px rgba(68, 50, 20, 0.35),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.12);
+}
+
+.app::before {
+  content: "CASE FILE";
+  position: absolute;
+  top: -14px;
+  left: 24px;
+  padding: 6px 20px;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4f381d;
+  border: 2px solid #7f5b29;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(180deg, #f0ddad, #dfc276);
 }
 
 .hero {
@@ -39,13 +69,15 @@ body {
 
 .hero h1 {
   margin: 6px 0 8px;
-  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .subtitle {
   margin: 0;
-  color: var(--muted);
+  color: var(--ink-muted);
   max-width: 720px;
 }
 
@@ -57,11 +89,32 @@ body {
 }
 
 .card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent), var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(0, 0, 0, 0.01)),
+    var(--paper);
+  border: 1px solid #a68b57;
+  border-radius: 4px;
   padding: 20px;
   box-shadow: var(--shadow);
+  position: relative;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 26px,
+      rgba(125, 93, 52, 0.08) 27px,
+      transparent 28px
+    );
+  mix-blend-mode: multiply;
+  opacity: 0.45;
+  border-radius: inherit;
 }
 
 .seed-panel {
@@ -86,7 +139,7 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 24px;
   padding-top: 18px;
-  border-top: 1px solid var(--border);
+  border-top: 1px dashed var(--line);
 }
 
 .mission-card {
@@ -96,15 +149,19 @@ body {
 .label {
   display: inline-block;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.72rem;
-  color: var(--accent);
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  color: var(--stamp);
   font-weight: 700;
+  border: 1px solid rgba(143, 47, 31, 0.5);
+  padding: 4px 8px;
+  background: rgba(143, 47, 31, 0.08);
 }
 
 h2 {
   margin: 8px 0 6px;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
+  text-transform: uppercase;
 }
 
 p {
@@ -112,42 +169,55 @@ p {
 }
 
 .muted {
-  color: var(--muted);
+  color: var(--ink-muted);
 }
 
 code {
   font-size: 1rem;
-  background: var(--panel-2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  background: var(--paper-shadow);
+  border: 1px dashed #9a8256;
+  border-radius: 4px;
   padding: 8px 10px;
   display: inline-block;
   margin-top: 8px;
+  color: var(--ink);
 }
 
 button {
   appearance: none;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 16px;
+  border: 1px solid #7a5a2b;
+  border-radius: 4px;
+  padding: 11px 16px;
   cursor: pointer;
   font: inherit;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--accent), #8fe1ff);
-  color: #04111d;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #f0e0b3, #d0b071);
+  color: #3f2d19;
+  box-shadow: 0 2px 0 #8b6a37;
 }
 
 button.secondary {
-  background: var(--panel-2);
-  color: var(--text);
-  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #efe8d2, #cfbea1);
+  color: #56442b;
+  border-color: #947750;
 }
 
 button:hover {
   transform: translateY(-1px);
 }
 
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #8b6a37;
+}
+
 @media (max-width: 720px) {
+  .app {
+    padding: 20px;
+  }
+
   .hero,
   .seed-panel {
     flex-direction: column;
