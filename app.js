@@ -1,4 +1,69 @@
 (function () {
+  const STYLE_STORAGE_KEY = "direwolfSelectedStyle";
+  const DEFAULT_STYLE_FILE = "style_default.css";
+  const AVAILABLE_STYLE_FILES = [
+    "style_default.css",
+    "style_folder.css",
+    "style_high_contrast.css",
+    "style_neon.css"
+  ];
+
+  function getStyleFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("style");
+  }
+
+  function setStyleInUrl(styleFile) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("style", styleFile);
+    window.history.replaceState({}, "", url);
+  }
+
+  function isValidStyleFile(styleFile) {
+    return typeof styleFile === "string" && /^style_[a-z0-9_\-]+\.css$/i.test(styleFile);
+  }
+
+  function toStylePath(styleFile) {
+    return `styles/${styleFile}`;
+  }
+
+  function getAvailableStyleFiles() {
+    return AVAILABLE_STYLE_FILES.filter(isValidStyleFile);
+  }
+
+  function resolveInitialStyle(availableStyles) {
+    const urlStyle = getStyleFromUrl();
+    const savedStyle = window.localStorage.getItem(STYLE_STORAGE_KEY);
+    const preferredStyle = urlStyle || savedStyle || DEFAULT_STYLE_FILE;
+
+    if (availableStyles.includes(preferredStyle)) {
+      return preferredStyle;
+    }
+
+    return DEFAULT_STYLE_FILE;
+  }
+
+  function applyStyle(styleFile) {
+    const stylesheet = document.getElementById("themeStylesheet");
+    if (!stylesheet) return;
+    stylesheet.setAttribute("href", toStylePath(styleFile));
+    setStyleInUrl(styleFile);
+    window.localStorage.setItem(STYLE_STORAGE_KEY, styleFile);
+  }
+
+  function populateStyleMenu(styleSelect, availableStyles, activeStyle) {
+    styleSelect.innerHTML = "";
+
+    availableStyles.forEach(function (styleFile) {
+      const option = document.createElement("option");
+      option.value = styleFile;
+      option.textContent = styleFile.replace(/^style_|\.css$/g, "").replace(/_/g, " ");
+      styleSelect.appendChild(option);
+    });
+
+    styleSelect.value = activeStyle;
+  }
+
   function mulberry32(a) {
     return function () {
       let t = (a += 0x6D2B79F5);
@@ -89,7 +154,37 @@
 
   const newSeedBtn = document.getElementById("newSeedBtn");
   const copyLinkBtn = document.getElementById("copyLinkBtn");
-  
+  const direwolfLogoBtn = document.getElementById("direwolfLogo");
+  const styleMenu = document.getElementById("styleMenu");
+  const styleSelect = document.getElementById("styleSelect");
+
+  function initializeStyleSelector() {
+    const availableStyles = getAvailableStyleFiles();
+    const activeStyle = resolveInitialStyle(availableStyles);
+    applyStyle(activeStyle);
+    populateStyleMenu(styleSelect, availableStyles, activeStyle);
+
+    direwolfLogoBtn.addEventListener("click", function () {
+      const currentlyHidden = styleMenu.hasAttribute("hidden");
+      if (currentlyHidden) {
+        styleMenu.removeAttribute("hidden");
+        styleSelect.focus();
+      } else {
+        styleMenu.setAttribute("hidden", "");
+      }
+    });
+
+    styleSelect.addEventListener("change", function (event) {
+      applyStyle(event.target.value);
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!styleMenu.hasAttribute("hidden") && !styleMenu.contains(event.target) && event.target !== direwolfLogoBtn && !direwolfLogoBtn.contains(event.target)) {
+        styleMenu.setAttribute("hidden", "");
+      }
+    });
+  }
+
   newSeedBtn.addEventListener("click", function () {
     refresh(makeSeed());
   });
@@ -108,6 +203,8 @@
       }, 1200);
     }
   });
+
+  initializeStyleSelector();
 
   const initialSeed = getSeedFromUrl() || makeSeed();
   refresh(initialSeed);

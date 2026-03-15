@@ -35,3 +35,27 @@
   cursor: url("img/cursor.cur"),auto;
   background: rgba(255,255,255,0);
 }
+.style-menu {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 999;
+}
+
+.style-menu label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.style-menu select {
+  min-width: 10rem;
+  cursor: pointer;
+}
