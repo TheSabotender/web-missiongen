@@ -5,7 +5,8 @@
     "style_default.css",
     "style_folder.css",
     "style_high_contrast.css",
-    "style_neon.css"
+    "style_neon.css",
+    "style_console.css"
   ];
 
   function getStyleFromUrl() {
