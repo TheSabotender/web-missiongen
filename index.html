@@ -10,73 +10,75 @@
 <body>
   <main class="app">
     <div class="logo">
-      <button id="direwolfLogo" aria-label="Choose style theme"><img src="img/Direwolf_logo.png"></img></button>
+      <button id="direwolfLogo" aria-label="Choose style theme"></button>
       <div id="styleMenu" class="style-menu" hidden>
         <label for="styleSelect">Style</label>
         <select id="styleSelect" aria-label="Select style theme"></select>
       </div>
     </div>
     
+    
     <div class="top-bar">
       <p class="eyebrow">Department of Investigation, Recon, and Espionage of the World Occult Liberation Force</p>
     </div>
-    
-    <header class="hero">
-      <div>
-        
-        <h1>Mission Generator</h1>
-        <p class="subtitle">Urban fantasy cases for British agents operating across Europe.</p>
-      </div>
-      <div class="controls">
-        <button id="newSeedBtn" class="secondary">New Mission</button>
-      </div>
-    </header>
 
-    <section class="seed-panel card">
-      <div>
-        <span class="label">Seed</span>
-        <code id="seedValue">-</code>
-      </div>
-      <div class="seed-actions">
-        <button id="copyLinkBtn" class="secondary">Copy Link</button>
-      </div>
-    </section>
-
-    <section class="grid">
-      <article class="card">
-        <span class="label">Place in Europe</span>
-        <h2 id="cityName">-</h2>
-        <p id="cityMeta" class="muted">-</p>
-      </article>
-
-      <article class="card">
-        <span class="label">Incident Site</span>
-        <h2 id="siteName">-</h2>
-        <p id="siteDesc" class="muted">-</p>
-      </article>
-    </section>
-
-    <section class="card mission-card">
-      <span class="label">Mission Event</span>
-      <h2 id="missionTitle">-</h2>
-      <p id="missionBody">-</p>
-
-      <div class="detail-grid">
+    <div class="content">
+      <header class="hero">
         <div>
-          <span class="label">Threat Type</span>
-          <p id="missionThreat">-</p>
+          <h1>Mission Generator</h1>
+          <p class="subtitle">Urban fantasy cases for British agents operating across Europe.</p>
         </div>
-        <div>
-          <span class="label">Tone</span>
-          <p id="missionTone">-</p>
+        <div class="controls">
+          <button id="newSeedBtn" class="secondary">New Mission</button>
         </div>
-      </div>
-    </section>
+      </header>
 
-    <section class="card">
-      <span class="label">Briefing Hook</span>
-      <p id="briefingHook">-</p>
-    </section>
+      <section class="seed-panel card">
+        <div>
+          <span class="label">Case Number</span>
+          <code id="seedValue">-</code>
+        </div>
+        <div class="seed-actions">
+          <button id="copyLinkBtn" class="secondary">Copy Link</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <span class="label">Place in Europe</span>
+          <h2 id="cityName">-</h2>
+          <p id="cityMeta" class="muted">-</p>
+        </article>
+
+        <article class="card">
+          <span class="label">Incident Site</span>
+          <h2 id="siteName">-</h2>
+          <p id="siteDesc" class="muted">-</p>
+        </article>
+      </section>
+
+      <section class="card mission-card">
+        <span class="label">Mission Event</span>
+        <h2 id="missionTitle">-</h2>
+        <p id="missionBody">-</p>
+
+        <div class="detail-grid">
+          <div>
+            <span class="label">Threat Type</span>
+            <p id="missionThreat">-</p>
+          </div>
+          <div>
+            <span class="label">Tone</span>
+            <p id="missionTone">-</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <span class="label">Briefing Hook</span>
+        <p id="briefingHook">-</p>
+      </section>
+    </div>
   </main>
 
   <script src="data/tables.js"></script>

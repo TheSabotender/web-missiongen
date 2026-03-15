@@ -92,7 +92,7 @@ p {
 }
 
 .card {
-  background: linear-gradient(180deg, rgba(92, 255, 92, 0.06), transparent), var(--panel);
+  background: linear-gradient(180deg, rgba(80, 255, 80, 0.06), transparent), var(--panel);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 16px;
@@ -108,40 +108,19 @@ p {
   font-weight: 700;
 }
 
-code {
-  font-size: 1rem;
-  background: var(--panel-2);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 6px 8px;
-  display: inline-block;
-  margin-top: 6px;
-  color: var(--accent);
-}
-
 button {
   appearance: none;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 10px 12px;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
   cursor: pointer;
   font: inherit;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  background: var(--panel-2);
-  color: var(--text);
+  text-decoration: underline;
+  text-align: left;
 }
 
 button.secondary {
   background: transparent;
   color: var(--muted);
-}
-
-button:hover,
-button:focus-visible {
-  outline: none;
-  background: #0a420a;
-  color: var(--accent);
-  box-shadow: 0 0 0 1px rgba(155, 255, 155, 0.25), 0 0 12px rgba(92, 255, 92, 0.35);
 }

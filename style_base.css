@@ -15,26 +15,32 @@
   font-weight: 700;
 }
 
-.eyebrow {
-  color: var(#d69cff);
-}
-
 .logo {
   position: fixed !important;
-  top: 0;
-  left: 0;
-}
-
-.logo img {
-  width: 48px;
-  height: 48px;
-  opacity: 0.2;
+  top: 10px;
+  left: 10px;
 }
 
 .logo button {
+  appearance: none;
+  border: none;
   cursor: url("img/cursor.cur"),auto;
-  background: rgba(255,255,255,0);
+  background: url("img/Direwolf_logo.png") no-repeat center;
+  background-size: contain;
+  opacity: 0.2;
+  width: 50px;
+  height: 50px;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: 0 0 0;
 }
+
+.logo button:hover,
+.logo button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0;
+}
+
 .style-menu {
   position: absolute;
   top: 56px;

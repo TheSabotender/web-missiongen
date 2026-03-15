@@ -59,6 +59,19 @@ body {
   background: linear-gradient(180deg, #f0ddad, #dfc276);
 }
 
+.logo button {
+  background: url("../img/Direwolf_logo_invert.png") no-repeat center;
+  background-size: contain;
+}
+
+.eyebrow {
+  color: rgba(0,0,0,0.11);
+}
+
+.style-menu label {
+  color: var(--paper);
+}
+
 .hero {
   display: flex;
   justify-content: space-between;
@@ -88,7 +101,7 @@ body {
   flex-wrap: wrap;
 }
 
-.card {
+.content {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(0, 0, 0, 0.01)),
     var(--paper);
@@ -99,7 +112,7 @@ body {
   position: relative;
 }
 
-.card::after {
+.content::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -115,6 +128,14 @@ body {
   mix-blend-mode: multiply;
   opacity: 0.45;
   border-radius: inherit;
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  padding: 8px;
+  margin: 0;
+  position: relative;
 }
 
 .seed-panel {

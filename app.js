@@ -98,12 +98,12 @@
 
   function getSeedFromUrl() {
     const params = new URLSearchParams(window.location.search);
-    return params.get("seed");
+    return params.get("case");
   }
 
   function setSeedInUrl(seed) {
     const url = new URL(window.location.href);
-    url.searchParams.set("seed", seed);
+    url.searchParams.set("case", seed);
     window.history.replaceState({}, "", url);
   }
 
@@ -166,7 +166,7 @@
     populateStyleMenu(styleSelect, availableStyles, activeStyle);
 
     direwolfLogoBtn.addEventListener("click", function () {
-      const currentlyHidden = styleMenu.style.display === "none";
+      const currentlyHidden = styleMenu.style.display !== "flex";
       if (currentlyHidden) {
         styleMenu.style.display = "flex";
         styleSelect.focus();
@@ -180,8 +180,9 @@
     });
 
     document.addEventListener("click", function (event) {
-      if (!styleMenu.hasAttribute("hidden") && !styleMenu.contains(event.target) && event.target !== direwolfLogoBtn && !direwolfLogoBtn.contains(event.target)) {
-        styleMenu.setAttribute("hidden", "");
+      const currentlyHidden = styleMenu.style.display !== "flex";
+      if (!currentlyHidden && !styleMenu.contains(event.target) && event.target !== direwolfLogoBtn && !direwolfLogoBtn.contains(event.target)) {
+        styleMenu.style.display = "none";
       }
     });
   }
