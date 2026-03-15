@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIREWOLF: Mission Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Department of Investigation, Recon, and Espionage of the World Occult Liberation Force</p>
+        <h1>Mission Generator</h1>
+        <p class="subtitle">Urban fantasy cases for British agents operating across Europe.</p>
+      </div>
+      <div class="controls">
+        <button id="newSeedBtn" class="secondary">New Mission</button>
+      </div>
+    </header>
+
+    <section class="seed-panel card">
+      <div>
+        <span class="label">Seed</span>
+        <code id="seedValue">-</code>
+      </div>
+      <div class="seed-actions">
+        <button id="copyLinkBtn" class="secondary">Copy Link</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <span class="label">Place in Europe</span>
+        <h2 id="cityName">-</h2>
+        <p id="cityMeta" class="muted">-</p>
+      </article>
+
+      <article class="card">
+        <span class="label">Incident Site</span>
+        <h2 id="siteName">-</h2>
+        <p id="siteDesc" class="muted">-</p>
+      </article>
+    </section>
+
+    <section class="card mission-card">
+      <span class="label">Mission Event</span>
+      <h2 id="missionTitle">-</h2>
+      <p id="missionBody">-</p>
+
+      <div class="detail-grid">
+        <div>
+          <span class="label">Threat Type</span>
+          <p id="missionThreat">-</p>
+        </div>
+        <div>
+          <span class="label">Tone</span>
+          <p id="missionTone">-</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <span class="label">Briefing Hook</span>
+      <p id="briefingHook">-</p>
+    </section>
+  </main>
+
+  <script src="data/tables.js"></script>
+  <script src="data/cities.js"></script>
+  <script src="data/sites.js"></script>
+  <script src="data/events.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
