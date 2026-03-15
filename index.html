@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DIREWOLF: Mission Generator</title>
   <link rel="stylesheet" href="style_base.css" />
-  <link rel="stylesheet" href="styles/style_default.css" />
+  <link id="themeStylesheet" rel="stylesheet" href="styles/style_default.css" />
 </head>
 <body>
   <main class="app">
     <div class="logo">
-      <button id="direwolfLogo"><img src="img/Direwolf_logo.png"></img></button>
+      <button id="direwolfLogo" aria-label="Choose style theme"><img src="img/Direwolf_logo.png"></img></button>
+      <div id="styleMenu" class="style-menu" hidden>
+        <label for="styleSelect">Style</label>
+        <select id="styleSelect" aria-label="Select style theme"></select>
+      </div>
     </div>
     
     <div class="top-bar">
