@@ -165,12 +165,12 @@
     populateStyleMenu(styleSelect, availableStyles, activeStyle);
 
     direwolfLogoBtn.addEventListener("click", function () {
-      const currentlyHidden = styleMenu.hasAttribute("hidden");
+      const currentlyHidden = styleMenu.style.display === "none";
       if (currentlyHidden) {
-        styleMenu.removeAttribute("hidden");
+        styleMenu.style.display = "flex";
         styleSelect.focus();
       } else {
-        styleMenu.setAttribute("hidden", "");
+        styleMenu.style.display = "none";
       }
     });
 

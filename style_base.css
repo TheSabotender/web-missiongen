@@ -39,7 +39,7 @@
   position: absolute;
   top: 56px;
   left: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 0.35rem;
   padding: 0.6rem;
