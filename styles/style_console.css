@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #031a03;
+  --panel: #052605;
+  --panel-2: #073307;
+  --text: #5cff5c;
+  --muted: #3acb3a;
+  --accent: #9bff9b;
+  --border: rgba(92, 255, 92, 0.35);
+  --shadow: 0 0 24px rgba(92, 255, 92, 0.16);
+}
+
+body {
+  margin: 0;
+  font-family: "Cascadia Mono", "Consolas", "Courier New", monospace;
+  background: radial-gradient(ellipse at center, #072607 0%, #031603 65%, #020b02 100%);
+  color: var(--text);
+  min-height: 100vh;
+  text-shadow: 0 0 6px rgba(92, 255, 92, 0.35);
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(92, 255, 92, 0.08) 0,
+    rgba(92, 255, 92, 0.08) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  mix-blend-mode: screen;
+  opacity: 0.45;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 38px;
+  box-shadow:
+    inset 0 0 180px rgba(0, 0, 0, 0.85),
+    inset 0 0 32px rgba(92, 255, 92, 0.18);
+}
+
+.app {
+  width: min(980px, calc(100% - 32px));
+  margin: 20px auto 32px;
+}
+
+.hero,
+.seed-panel,
+.controls,
+.seed-actions,
+.grid,
+.detail-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.hero,
+.seed-panel,
+.grid,
+.mission-card,
+.detail-grid {
+  margin-bottom: 14px;
+}
+
+.hero h1,
+h2 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.subtitle,
+.muted,
+p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(92, 255, 92, 0.06), transparent), var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.label {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+code {
+  font-size: 1rem;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 8px;
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--accent);
+}
+
+button {
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  background: var(--panel-2);
+  color: var(--text);
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--muted);
+}
+
+button:hover,
+button:focus-visible {
+  outline: none;
+  background: #0a420a;
+  color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(155, 255, 155, 0.25), 0 0 12px rgba(92, 255, 92, 0.35);
+}
